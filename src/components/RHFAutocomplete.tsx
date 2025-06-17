@@ -5,13 +5,13 @@ import {
   type FieldValues,
   type Path,
 } from "react-hook-form";
-import type { Option } from "../users/types/option";
+import type { Option } from "../types/option";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
 type Props<T extends FieldValues> = {
   name: Path<T>;
-  options: Option[];
+  options?: Option[];
   label: string;
 };
 
@@ -27,12 +27,12 @@ function RHFAutocomplete<T extends FieldValues>({
       name={name}
       render={({ field: { value, onChange, ref }, fieldState: { error } }) => (
         <Autocomplete
-          options={options}
+          options={options ?? []}
           value={value.map((id: string) =>
-            options.find((item) => item.id === id),
+            options?.find((item) => item.id === id),
           )}
           getOptionLabel={(option) =>
-            options.find((item) => item.id === option.id)?.label ?? ""
+            options?.find((item) => item.id === option.id)?.label ?? ""
           }
           isOptionEqualToValue={(option, newValue) => option.id === newValue.id}
           onChange={(_, newValue) => {

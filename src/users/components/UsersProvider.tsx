@@ -7,7 +7,7 @@ import {
   defaultValues,
   userSchema,
   type UserSchemaType,
-} from "../types/schema";
+} from "../../types/schema";
 
 function UsersProvider() {
   const formMethods = useForm<UserSchemaType>({
