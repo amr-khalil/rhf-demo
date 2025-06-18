@@ -10,7 +10,7 @@ type Props<T extends FieldValues> = {
   name: Path<T>;
 } & Pick<TextFieldProps, "label">;
 
-function RHFTexfField<T extends FieldValues>({ name, ...props }: Props<T>) {
+function RHFTextField<T extends FieldValues>({ name, ...props }: Props<T>) {
   const { control } = useFormContext<T>();
   return (
     <Controller
@@ -28,4 +28,4 @@ function RHFTexfField<T extends FieldValues>({ name, ...props }: Props<T>) {
   );
 }
 
-export default RHFTexfField;
+export default RHFTextField;
